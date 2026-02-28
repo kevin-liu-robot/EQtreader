@@ -1,0 +1,33 @@
+[[source]]
+url = "http://mirrors.aliyun.com/pypi/simple/"
+verify_ssl = false
+name = "pypi"
+
+[packages]
+six = "*"
+requests = "*"
+easyutils = "*"
+
+[dev-packages]
+pytest-cov = "*"
+pre-commit = "*"
+pytest = "*"
+pylint = "*"
+mypy = "*"
+isort = "*"
+black = "==18.6b4"
+ipython = "*"
+better-exceptions = "*"
+pylint-django = "*"
+bumpversion = "*"
+
+[requires]
+python_version = "3.6"
+
+[scripts]
+sort_imports = "bash -c 'isort \"$@\"; git add -u' --"
+format = "bash -c 'black -l 79 \"$@\"; git add -u' --"
+lint = "pylint"
+type_check = "mypy"
+test = "bash -c 'pytest --cov=easyquotation'"
+bump = "bash -c 'pipenv lock -r > requirements.txt; git add -u; git commit  -m \":star: update requirements.txt\"; bumpversion \"$@\"' --"
